@@ -1,3 +1,4 @@
+%include "./constants.asm"
 ; ------------------------------------------------------------
 ; ## Function: print
 ;
@@ -30,7 +31,27 @@ print:
     jmp .print_loop
 
 .end_print_func:
-    ret 2              ; remove the arguments pushed on the stack 
+    ret 2              ; return and also remove the arguments pushed on the stack 
+
+; ------------------------------------------------------------
+; ## Function: print_nl
+;
+; ## Description:
+;   - print new line CRLF form
+;
+; ## Clobbers:
+;   - ax
+; ------------------------------------------------------------
+print_nl:
+    mov ah, 0x0e       ; tty mode 
+    mov al, CR
+    int 0x10
+    mov al, LF
+    int 0x10
+    ret
+    
+
+
 
     
 

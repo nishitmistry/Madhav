@@ -1,0 +1,2 @@
+CR equ 0x0D
+LF equ 0x0A
