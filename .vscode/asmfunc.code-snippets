@@ -1,0 +1,35 @@
+{
+  "ASM Function Documentation": {
+    "prefix": "asmfunc",
+    "body": [
+      "; ------------------------------------------------------------",
+      "; ## Function: ${1:function_name}",
+      ";",
+      "; ## Description:",
+      ";   - ${2:Brief description of what the function does}",
+      ";",
+      "; ## Calling Convention:",
+      ";   - ${3:custom / cdecl / fastcall / sysv}",
+      ";",
+      "; ## Inputs:",
+      ";   - ${4:Registers or stack arguments}",
+      ";",
+      "; ## Outputs:",
+      ";   - ${5:Return values (registers / memory effects)}",
+      ";",
+      "; ## Clobbers:",
+      ";   - ${6:Registers modified}",
+      ";",
+      "; ## Preconditions:",
+      ";   - ${7:Required CPU state or assumptions}",
+      ";",
+      "; ## Postconditions:",
+      ";  - ${8:System state after return}",
+      ";",
+      "; ## Notes:",
+      ";   - ${9:Edge cases, warnings, or references}",
+      "; ------------------------------------------------------------",
+      "${1:function_name}:"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "ASM Small Function Doc": {
+    "prefix": "asmleaf",
+    "body": [
+      "; ------------------------------------------------------------",
+      "; ## ${1:function_name} — ${2:what it does}",
+      "; ## Inputs: ${3:none}",
+      "; ## Outputs: ${4:none}",
+      "; ## Clobbers: ${5:registers}",
+      "; ------------------------------------------------------------",
+      "${1:function_name}:"
+    ]
+  }
+}
