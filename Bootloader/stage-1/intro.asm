@@ -17,8 +17,8 @@ print_text_art:
     call print_nl
     call print
     call print_nl
-    ; push bootloader_stage_1
-    ; call print
+    push bootloader_stage_1
+    call print
     call print_nl
     push created_by
     call print
