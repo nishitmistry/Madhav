@@ -9,7 +9,7 @@ F ?=Bootloader/stage-1/boot.asm
 BOOT_BIN := bin/$(basename $(notdir $(F))).bin
 
 # === TARGETS ===
-
+# first clean the bin directory then, assemble the bin and run it using qemu 
 all: clean $(BOOT_BIN) run
 debug: clean $(BOOT_BIN) run_debug
 

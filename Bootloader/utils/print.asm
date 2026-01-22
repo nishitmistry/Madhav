@@ -1,9 +1,9 @@
-%include "./constants.asm"
+%include "./Bootloader/constants.asm"
 ; ------------------------------------------------------------
 ; ## Function: print
 ;
 ; ## Description:
-;   - It print the chars passed in the stack before calling.
+;   - It print the chars passed in the stack before calling using bios interupts.
 ;
 ; ## Inputs:
 ;   - Stack argument (string memory address terminated by null).
@@ -37,7 +37,7 @@ print:
 ; ## Function: print_nl
 ;
 ; ## Description:
-;   - print new line CRLF form
+;   - print new line CRLF form, using bios interupts.
 ;
 ; ## Clobbers:
 ;   - ax

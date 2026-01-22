@@ -12,7 +12,7 @@ start:
     mov sp, STACK    ; Set stack to guarantee data safety
 
 jmp $
-%include "./utils/print.asm"
+%include "./Bootloader/utils/print.asm"
 %include "./Bootloader/stage-1/intro.asm"
 times 510-($-$$) db 0
 dw 0xaa55

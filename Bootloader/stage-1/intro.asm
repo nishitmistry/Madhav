@@ -1,3 +1,4 @@
+%include "./Bootloader/strings.asm"
 print_text_art:
     push madhav_art_6
     push madhav_art_5
@@ -17,8 +18,8 @@ print_text_art:
     call print_nl
     call print
     call print_nl
-    push bootloader_stage_1
-    call print
+    ; push bootloader_stage_1
+    ; call print
     call print_nl
     push created_by
     call print
