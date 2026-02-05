@@ -11,6 +11,7 @@ start:
     mov ss, ax
     mov sp, STACK    ; Set stack
     mov sp, bp
+    sti              ; enable interrupts after setup
 
     ; clear the screen 
     call clear_screen
