@@ -1,4 +1,4 @@
-%include "./Bootloader/stage-1/strings.asm"
+%include "./Bootloader/stage-2/strings.asm"
 print_text_art:
     push bios_intro
     call print
