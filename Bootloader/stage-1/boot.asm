@@ -1,8 +1,8 @@
 [org 0x7c00]    ; this is where the boot loader is started
-[bits 16]       ; tell the nasm that we are in 16 bits real mode
+[bits 16]       ; forces the use of 16-bit operands, addressing modes, and register sizes
 
 ; IMPORTANT THIS FILE CANNOT BE MORE THAN 512 BYTES IN SIZE
-; AS THE FAT SPECIFICATION SAYS JUST 1 SECTOR IS RESERVED 
+; AS OUR FAT SPECIFICATION SAYS JUST 1 SECTOR IS RESERVED 
 STACK equ 0x9000
 
 
