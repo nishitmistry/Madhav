@@ -1,4 +1,5 @@
-%include "./Bootloader/constants.asm"
+%include "constants.asm"
+
 ; ------------------------------------------------------------
 ; ## Function: print
 ;
