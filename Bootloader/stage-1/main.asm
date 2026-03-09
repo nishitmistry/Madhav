@@ -46,7 +46,7 @@ start:
 
 
     push 1
-    push 1
+    push 4
     push STAGE_2_OFFSET
     call bios_read_disk
 
