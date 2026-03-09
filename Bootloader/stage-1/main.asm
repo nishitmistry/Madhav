@@ -1,5 +1,6 @@
 [org 0x7c00]    ; this is where the boot loader is started
 [bits 16]       ; forces the use of 16-bit operands, addressing modes, and register sizes
+%include "constants.asm"
 
 ; IMPORTANT THIS FILE CANNOT BE MORE THAN 512 BYTES IN SIZE
 ; AS OUR FAT SPECIFICATION SAYS JUST 1 SECTOR IS RESERVED 
@@ -46,10 +47,10 @@ start:
 
     push 1
     push 1
-    push 0x7e00
+    push STAGE_2_OFFSET
     call bios_read_disk
 
-    jmp 0x7e00
+    jmp STAGE_2_OFFSET
     jmp hlt
 
 ; ------------------------------------------------------------

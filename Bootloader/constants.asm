@@ -1,2 +1,3 @@
 CR equ 0x0D
 LF equ 0x0A
+STAGE_2_OFFSET equ 0x7e00
