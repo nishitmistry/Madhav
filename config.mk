@@ -3,6 +3,8 @@ QEMU=qemu-system-x86_64
 BUILD_DIR=$(ROOT_DIR)/bin
 ROOT_DIR := $(CURDIR)
 
+MAKEFLAGS += --no-print-directory
+
 
 export PATH := $(ROOT_DIR)/toolchain/i686-elf/bin:$(PATH)
 

@@ -1,3 +1,5 @@
+include $(MACRO_MK)
+
 TARGET_LINKFLAGS += -T linker.ld
 STAGE_2_BUILD = $(BOOT_BUILD)/stage-2
 
@@ -13,15 +15,15 @@ all: stage2
 stage2: $(STAGE_2_BUILD)/stage2.bin
 $(STAGE_2_BUILD)/stage2.bin: $(OBJECTS_ASM) $(OBJECTS_C)
 	@$(TARGET_LD) $(TARGET_LINKFLAGS) -Wl,-Map=$(STAGE_2_BUILD)/stage2.map -o $@ $^ $(TARGET_LIBS)
-	@echo "--> Created  stage2.bin"
+	$(call log_success,Created  stage2.bin)
 
 $(STAGE_2_BUILD)/c/%.obj: %.c
 	@mkdir -p $(@D)
 	@$(TARGET_CC) $(TARGET_CFLAGS) -c -o $@ $<
-	@echo "--> Compiled: " $<
+	$(call log_info,"Compiled: $<")
 	
 
 $(STAGE_2_BUILD)/asm/%.obj: %.asm
 	@mkdir -p $(@D)
 	@$(TARGET_ASM) $(TARGET_ASMFLAGS) -o $@ $<
-	@echo "--> Compiled: " $<
+	$(call log_info,Compiled: $<)

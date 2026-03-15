@@ -1,3 +1,4 @@
+include $(MACRO_MK)
 export BOOT_BUILD = $(BUILD_DIR)/Bootloader
 export BOOT_DIR = $(ROOT_DIR)/Bootloader
 
@@ -9,8 +10,9 @@ always:
 	@mkdir -p $(BOOT_BUILD)
 	
 linking: stage1 stage2
-	@echo "Linking the stage1 and stage2 file"
-	cat $(BOOT_BUILD)/stage-1/stage1.bin $(BOOT_BUILD)/stage-2/stage2.bin  > $(BUILD_DIR)/boot.bin
+	$(call log_info,Linking the stage1 and stage2 file)
+	@cat $(BOOT_BUILD)/stage-1/stage1.bin $(BOOT_BUILD)/stage-2/stage2.bin  > $(BUILD_DIR)/boot.bin
+	$(call log_success,Stage1 and stage2 Glued successfully)
 
 
 stage1:
