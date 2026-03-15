@@ -1,42 +1,44 @@
+%include "../constants.asm"
+extern print
+extern c_start
+extern __bss_start
+extern __end
+global Enter_32_protected
 Enter_32_protected:
+    [bits 16]
     cli                 ; step - 1 disable the interrupts
     call EnableA20     ; step - 2 Enable the A20 line
     call LoadGDT        ; step - 3 Load the GDT
 
-    ; 4 - set protection enable flag in CR0
+    ; step 4 - set protection enable flag in CR0
     mov eax, cr0
     or al, 1
     mov cr0, eax
 
-    ; 5 - far jump into protected mode
+    ; step 5 - far jump into protected mode
     jmp dword 08h:.pmode
 
 .pmode:
     ; we are now in protected mode!
     [bits 32]
     
-    ; 6 - setup segment registers
+    ; step 6 - setup segment registers
     mov ax, 0x10
     mov ds, ax
     mov ss, ax
 
-
-    ; print hello world
-    mov esi, ENTERED_32BIT_PROTECTED
-    mov edi, ScreenBuffer
+    ; step 7 - clear all the data in the bss section 
+    call .zero_bss
+    call c_start
     cld
-.loop:
-    lodsb
-    or al, al
-    jz .halt
 
-    mov [edi], al
-    inc edi
-
-    mov [edi], bl
-    inc edi
-    inc bl
-    jmp .loop
+.zero_bss:
+    mov edi, __bss_start
+    mov ecx, __end
+    sub ecx, edi          ; byte count
+    xor eax, eax
+    rep stosb             ; fill with zeros
+    ret
 
 .halt:
     jmp .halt
@@ -204,10 +206,9 @@ g_GDTDesc:  dw g_GDTDesc - g_GDT - 1    ; limit = size of GDT
 
 
 
-A20_ENABLED: dw "A20 Line Enabled", CR, LF, 0 
-A20_DISABLED: dw "A20 Line is Disabled", CR, LF, 0
-A20_KEYBOARD_WAY: dw "Enabling A20 Line through keyboard ", CR, LF, 0
-ENTERED_32BIT_PROTECTED: dw "Hurray you have entered 32 BIT Protected mode", CR, LF, 0
+A20_ENABLED: dw " A20 Line Enabled", CR, LF, 0 
+A20_DISABLED: dw " A20 Line is Disabled", CR, LF, 0
+A20_KEYBOARD_WAY: dw " Enabling A20 Line through keyboard ", CR, LF, 0
 
 
 KbdControllerDataPort               equ 0x60

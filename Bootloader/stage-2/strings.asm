@@ -1,3 +1,6 @@
+%include "../constants.asm"
+[bits 16]
+global bios_intro
 bios_intro:
     db "  __  __             _  _                      ", CR, LF
     db " |  \/  |           | || |                     ", CR, LF

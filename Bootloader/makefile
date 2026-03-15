@@ -1,21 +1,20 @@
-Boot_Build = $(BUILD_DIR)/Bootloader
+export BOOT_BUILD = $(BUILD_DIR)/Bootloader
+export BOOT_DIR = $(ROOT_DIR)/Bootloader
+
+.PHONY: all always stage1 stage2
 
 all: always linking
 
 always: 
-	@mkdir -p $(Boot_Build)
+	@mkdir -p $(BOOT_BUILD)
 	
 linking: stage1 stage2
 	@echo "Linking the stage1 and stage2 file"
-	cat $(Boot_Build)/stage1.bin $(Boot_Build)/stage2.bin  > $(BUILD_DIR)/boot.bin
+	cat $(BOOT_BUILD)/stage-1/stage1.bin $(BOOT_BUILD)/stage-2/stage2.bin  > $(BUILD_DIR)/boot.bin
 
 
-stage1:$(Boot_Build)/stage1.o
-$(Boot_Build)/stage1.o:
-	@echo "Creating stage1.o file"
-	$(ASM) $(ASM_FLAGS) -o $(Boot_Build)/stage1.bin stage-1/main.asm
+stage1:
+	@$(MAKE) -C stage-1
 
-stage2:$(Boot_Build)/stage2.o
-$(Boot_Build)/stage2.o:
-	@echo "Creating stage2.o file"
-	$(ASM) $(ASM_FLAGS) -o $(Boot_Build)/stage2.bin  stage-2/main.asm
+stage2:
+	@$(MAKE) -C stage-2

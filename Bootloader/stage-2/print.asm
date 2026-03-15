@@ -1,4 +1,5 @@
-
+%include "../constants.asm"
+[bits 16]
 ; ------------------------------------------------------------
 ; ## Function: print
 ;
@@ -17,6 +18,7 @@
 ; ## Notes:
 ;   - this function chean the stack
 ; ------------------------------------------------------------
+global print
 print:
     push bp             ; Save the old base pointer
     mov bp, sp
@@ -46,6 +48,7 @@ print:
 ; ## Clobbers:
 ;   - ax
 ; ------------------------------------------------------------
+global print_nl
 print_nl:
     pusha
     mov ah, 0x0e       ; tty mode 
@@ -62,6 +65,7 @@ print_nl:
 ; ## Description:
 ;   - clears the sceen using 0x10 bios interupt
 ; ------------------------------------------------------------
+global clear_screen
 clear_screen:
     pusha
 

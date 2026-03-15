@@ -1,12 +1,13 @@
-%include "constants.asm"
-[org STAGE_2_OFFSET]
-[bits 16]
+%include "../constants.asm"
+
+extern clear_screen
+extern print_text_art
+extern Enter_32_protected
+global stage_2
+section .entry
 stage_2:
+    [bits 16]
     call clear_screen
     call print_text_art
-    call Enter_32_protected
+    jmp Enter_32_protected
     ret
-
-%include "stage-2/32bit.asm"
-%include "stage-2/intro.asm"
-%include "stage-2/print.asm"
