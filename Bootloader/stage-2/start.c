@@ -2,7 +2,7 @@
 
 volatile char* video_memory = (volatile char*) 0xB8000;
 const int color = 0x0F;
-const char ENTERED_PROTECTED[] = " Hurray you have entered 32 BIT Protected mode  \r\n";
+const char ENTERED_PROTECTED[] = " Hurray you have entered 32 BIT Protected mode";
 // Function to print a character at a specific position (offset)
 void printChar(char character, int offset) {
     // Each character and its attribute take up 2 bytes in memory, 
